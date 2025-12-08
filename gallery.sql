@@ -55,4 +55,5 @@ CREATE TABLE IF NOT EXISTS `likefoto` (
   `UserID` int(11) DEFAULT NULL,
   `TanggalLike` date DEFAULT NULL,
   PRIMARY KEY (`LikeID`),
-  KEY `FotoID` (`FotoID`),
+  KEY `FotoID` (`FotoID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
