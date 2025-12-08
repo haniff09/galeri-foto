@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS gallery_db;
-USE gallery_db;
+CREATE DATABASE IF NOT EXISTS gallery;
+USE gallery;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,22 +56,3 @@ CREATE TABLE IF NOT EXISTS `likefoto` (
   `TanggalLike` date DEFAULT NULL,
   PRIMARY KEY (`LikeID`),
   KEY `FotoID` (`FotoID`),
-  KEY `UserID` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-ALTER TABLE `album`
-  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
-
-ALTER TABLE `foto`
-  ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`AlbumID`) REFERENCES `album` (`AlbumID`),
-  ADD CONSTRAINT `foto_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
-
-ALTER TABLE `komentarfoto`
-  ADD CONSTRAINT `komentarfoto_ibfk_1` FOREIGN KEY (`FotoID`) REFERENCES `foto` (`FotoID`),
-  ADD CONSTRAINT `komentarfoto_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
-
-ALTER TABLE `likefoto`
-  ADD CONSTRAINT `likefoto_ibfk_1` FOREIGN KEY (`FotoID`) REFERENCES `foto` (`FotoID`),
-  ADD CONSTRAINT `likefoto_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
-
-COMMIT;
